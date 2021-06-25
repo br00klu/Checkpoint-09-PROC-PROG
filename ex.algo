@@ -1,0 +1,60 @@
+////with PROC
+PROCEDURE dot_product (t1,t2: ARRAY_OF FLOAT[10], VAR p: FLOAT)
+VAR
+    i: INTEGER:=0;
+BEGIN
+    p :=0;
+    FOR i FROM 0 TO t1.length-1 STEP 1 DO
+        p:= p+t1[i]*t2[i];
+    END_FOR
+END
+
+ALGORITHM EX
+VAR
+    t1,t2: ARRAY_OF FLOAT[10])
+    ps: FLOAT;
+BEGIN
+    Read (t1);
+    Read (t2);
+
+    IF t1.length <> t2.length THEN
+        Write ('invalid vectors, try again!');
+    ELSE
+        dot_product(t1,t2,ps);
+    END_IF
+
+    IF ps=0 THEN 
+        Write ('these vectors are orthogonal!');
+    ELSE
+        Write ('these vectors are NOT orthogonal!');
+    END_IF    
+END
+
+////with FUNCT
+FUNCTION dot_product(t1,t2: ARRAY_OF FLOAT[10]) : FLOAT
+VAR
+    i: INTEGER:=0;
+    ps: FLOAT :=0;
+BEGIN
+     FOR i FROM 0 TO t1.length-1 STEP 1 DO
+        ps:= ps+t1[i]*t2[i];
+    RETURN ps;
+END
+
+ALGORITHM EX
+VAR
+    t1,t2: ARRAY_OF FLOAT[10])
+    p: FLOAT;
+BEGIN
+    Read (t1);
+    Read (t2);
+
+    IF t1.length <> t2.length THEN
+        Write ('invalid vectors, try again!');
+    ELSE 
+        IF dot_product(t1,t2)=0 THEN 
+             Write ('these vectors are orthogonal!');
+        ELSE 
+             Write ('these vectors are NOT orthogonal!');
+    END_IF    
+
